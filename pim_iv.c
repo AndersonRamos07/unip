@@ -2,108 +2,145 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define STAMP "\x1b[46m"
+
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
 #define BLUE "\x1b[34m"
 #define ALPHA "\x1b[0m"
+#define YELLOW "\x1b[33m"
 #define GRAY "\e[0;37m"
 #define DGRAY "\e[1;30m"
+#define HIDDEN "\x1b[7m"
 
-typedef enum { false, true } bool;
+struct acesso
+{
+    char login[25];
+    char senha[7];
+};
+struct acesso sistema;
 
-char login [25]; char senha[25];
-int count = 0;
+struct ficha
+{
+    char nome[25];
+    int cpf[15];
+    int telefone[15];
+    char endereco[65];
+    int nascimento[10];
+    char email[25];
+    int diagnostico[10];
+    int doenca; //diabetes, obesidade, hipertensão, tuberculose, outros.
+};
+struct ficha paciente;
 
-//REGISTRO DO PACIENTE
+void cadastrarAcesso(struct acesso *ac);
 
-char nomeP [25], cpfP [15], telefoneP [20], emailP [50]; //DADOS DE CONTATO
-char endereco [70], cep[9]; //DADOS DE ENDEREÇO
-char dataP, datadP; //DATAS
-int febredorato; //"febredorato" é apenas pra não digitar aquele nome... hehe
+void confirmarAcesso(void);
 
-//COMO IRÁ FUNCIONAR OS ID DAS PATOLOGIAS
-//fdr 1 = diabetes, 2 = obesidade, 3 = hipertensão, 4 = tuberculose, 5 = outros
+// >>>>>>> PROGRAMA PRINCIPAL (main) <<<<<<<
 
-void boasVindas (void);
+int main(int argc, char *argv[]){
 
-void confirmaLogin (void);
+   confirmarAcesso();
 
-void novoCadastro (void);
-
-void informeDP (void);
-
-int main(int argc, char **argv){
-
-    confirmaLogin();       
+   //cadastrarAcesso(&sistema);
 
     return 0;
-}
-
-void boasVindas(){
+};
+/*
+int boasVindas(){
     system("clear");
-    int resposta;
-    printf(GREEN "\nSEJA BEM VIND@ AO SISTEMA DO PIM IV\n" ALPHA);
+    char answer;
+    printf(BLUE "\nBEM VIND@ AO SISTEMA DO PIM IV\n" ALPHA);
+    printf(GREEN "\nSISTEMA DE DIAGNÓTICO DE PACIENTE\n" ALPHA);
 
-    printf("\nO que deseja fazer?\n\t\v 1 - Acessar o Sistema:\n\t 2 - Cadastrar novo acesso:\n\t 3 - Inserir dados do Paciente:\n\t ...aperte qualquer outra tecla para sair!\n\nR: ");
-    scanf("%d", &resposta);
-        switch(resposta){
-            case 1:
-                confirmaLogin();
+    printf("\nO que deseja fazer?\n\t\v 1 - Acessar o Sistema:\n\t 2 - Cadastrar novo acesso:\n\t 3 - Protocolo de Fichas:\n\v ...aperte '0'(zero) para sair!\n\nR: ");
+    do{
+        scanf("%c", &answer);
+        switch(answer){
+            case '1':
+                acessarSistema();
             break;
-            case 2:
-                novoCadastro();
+            case '2':
+                cadastrarAcesso();
             break;
-            case 3:
-                informeDP();
+            case '3':
+                consultarFichas();
+            break;
+            case '0':
+                exit(0);
             break;
             default:
-                printf("Favor selecione uma das opções!\n");
-                confirmaLogin();
+                printf(RED "Favor selecionar uma opção válida!\n" ALPHA);
+            }
+    } while(answer == '1' || answer == '2' || answer == '3' || answer == '0');
+    return 0;
+};
+*/
+
+void cadastrarAcesso(struct acesso *ac){
+    
+    FILE *pointer;
+
+    pointer = fopen("access.txt", "w");
+
+    if(pointer == NULL){
+        printf("Erro ao abrir o arquivo!");
+    }else{
+        system("clear");
+        printf(STAMP "[======= ÁREA DE CADASTRO DE USUÁRIO =======]\n" ALPHA);
+        printf("Digite seu email: "DGRAY "\n--servirá como login de acesso-- \n\t" ALPHA);
+        scanf("%s", ac->login);
+        fflush(stdin);
+        printf("\nAgora uma senha:" DGRAY "\n--deverá conter 5 digitos-- \n\t" ALPHA);
+        scanf("%s", ac->senha);
+        fprintf(pointer, "login:\t%s\nsenha:\t%s\n", ac->login, ac->senha);
+        fclose(pointer);
+        printf(YELLOW "\vNovos dados de acesso cadastrados com sucesso!\n\7"ALPHA);
+    };
+};
+
+void confirmarAcesso(void){
+    char logtmp[25];
+    char snhtmp[7];
+
+    char complogin[25];
+    char compsnh[7];
+
+    int checkoutL, checkoutS;
+
+    FILE *pointer;
+
+    pointer = fopen("access.txt", "r");
+
+    if(pointer == NULL){
+        printf("Erro ao abrir o arquivo!");
+    }else{
+        system("clear");
+        printf(STAMP "[======= ÁREA DE ACESSO DO SISTEMA PIM-IV =======]\n" ALPHA);
+        printf("Digite seu email: ");
+        scanf("%s", logtmp);
+        fflush(stdin);
+        printf("\nDigite sua senha: ");
+        scanf("%s", snhtmp);
+        fscanf(pointer, "login:\t%s\nsenha:\t%s\n", complogin, compsnh);
+        fclose(pointer);
+
+        printf("%s \t %s\n", complogin, compsnh);
+        printf("%s \t %s\n", logtmp, snhtmp);
+        
+        checkoutL = strcmp(logtmp, complogin);
+        checkoutS = strcmp(snhtmp, compsnh);
+
+        if(checkoutL == 0 && checkoutS == 0){
+            printf("Bem vindo ao sistema!");
+        } else{
+            printf("Tá errado ae! \n Tenta de novo!");
+            exit(0);
         };
-}
 
-void confirmaLogin (){
-    system("clear");
-    printf(RED "\n\t>>>>>>>ACESSO AO SISTEMA<<<<<<<\n" ALPHA);
-    printf("\v\nInsira o login: " DGRAY " --digita qualquer coisa--" ALPHA "\n\t");
-    scanf("%s", &login[0]);
-    printf("\v\nInsira a senha: " DGRAY " --relaxa que não tem senha nenhuma--" ALPHA "\n\t");
-    scanf("%s", &senha[0]);
-    printf("\n\tRetornando para a tela de Boas-Vindas!<-------\n\v");
-    boasVindas();
+
+        printf("\n%s \n%s \n", complogin, compsnh);
+
+    };
 };
-
-void novoCadastro (){
-    system("clear");
-    printf(RED "\n\t>>>>>>>NOVO CADASTRO<<<<<<<\n" ALPHA);
-    printf("\v\nInsira o login: " DGRAY " --digita qualquer coisa--" ALPHA "\n\t");
-    scanf("%s", &login[0]);
-    printf("\v\nInsira a senha: " DGRAY " --digita uma senha qualquer--" ALPHA "\n\t");
-    scanf("%s", &senha[0]);
-    printf("\n\tRetornando para a tela de Boas-Vindas!<-------\n\v");
-    boasVindas();
-};
-
-void informeDP (){
-    int cont = 0;
-    system("clear");
-    printf(BLUE "\v >>>Informe os dados do paciente: \n" ALPHA);
-        printf("\v\tNome: \n\t");
-        scanf("%s", &nomeP[cont]);
-        setbuf(stdin, NULL);
-        printf("\v\tCPF: \n\t");
-        scanf("%s", &cpfP[cont]);
-        setbuf(stdin, NULL);
-        printf("\v\tTelefone: \n\t");
-        scanf("%s", &telefoneP[cont]);
-        setbuf(stdin, NULL);
-        printf("\v\t Endereço completo: " DGRAY "Exemplo: Rua Dr. Ulisses, 23 - Vila UNIP, São Paulo - SP \n\t" ALPHA);
-        scanf("%s", &endereco[cont]);
-        setbuf(stdin, NULL);
-        printf("\n\t CEP: \n\t");
-        scanf("%s", &cep[cont]);
-        setbuf(stdin, NULL);             
-    printf(GREEN "\n\v Testado!\n\v" ALPHA);
-    cont++;
-    exit(0);
-}

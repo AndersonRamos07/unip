@@ -1,0 +1,26 @@
+realizar o cadastro dos pacientes que foram diagnosticados com COVID-19
+
+utilizar
+
+realizar o login
+id e senha (validar)
+(acesso ou não)<<<<
+
+informar os dados do pacientes
+salvar esses dados no arquivo
+
+não pode colocar caracteres especiais
+Nome
+CPF
+Telefone
+Endereço (rua, numero, bairro, cidade, estado e CEP)
+data de nascimento
+e-mail
+data do diagnosticados
+comorbidade do paciente (diabetes, obesidade, hipertensão, tuberculose, outros)
+
+apos incluir a data de nascimento, o sistema deverá verificar se é do grupo de risco (65 anos)
+se sim, salvar o CEP e a idade do paciente
+
+- SE tiver 65 ou mais OU tiver alguma comorbidade
+
