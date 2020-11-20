@@ -2,16 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STAMP "\x1b[46m"
-
-#define RED "\x1b[31m"
-#define GREEN "\x1b[32m"
-#define BLUE "\x1b[34m"
-#define ALPHA "\x1b[0m"
-#define YELLOW "\x1b[33m"
-#define GRAY "\e[0;37m"
-#define DGRAY "\e[1;30m"
-#define HIDDEN "\x1b[7m"
+#include "pim_colors.h"
 
 struct acesso
 {
@@ -47,36 +38,6 @@ int main(int argc, char *argv[]){
 
     return 0;
 };
-/*
-int boasVindas(){
-    system("clear");
-    char answer;
-    printf(BLUE "\nBEM VIND@ AO SISTEMA DO PIM IV\n" ALPHA);
-    printf(GREEN "\nSISTEMA DE DIAGNÓTICO DE PACIENTE\n" ALPHA);
-
-    printf("\nO que deseja fazer?\n\t\v 1 - Acessar o Sistema:\n\t 2 - Cadastrar novo acesso:\n\t 3 - Protocolo de Fichas:\n\v ...aperte '0'(zero) para sair!\n\nR: ");
-    do{
-        scanf("%c", &answer);
-        switch(answer){
-            case '1':
-                acessarSistema();
-            break;
-            case '2':
-                cadastrarAcesso();
-            break;
-            case '3':
-                consultarFichas();
-            break;
-            case '0':
-                exit(0);
-            break;
-            default:
-                printf(RED "Favor selecionar uma opção válida!\n" ALPHA);
-            }
-    } while(answer == '1' || answer == '2' || answer == '3' || answer == '0');
-    return 0;
-};
-*/
 
 void cadastrarAcesso(struct acesso *ac){
     
@@ -116,6 +77,7 @@ void confirmarAcesso(void){
     if(pointer == NULL){
         printf("Erro ao abrir o arquivo!");
     }else{
+        do{
         system("clear");
         printf(STAMP "[======= ÁREA DE ACESSO DO SISTEMA PIM-IV =======]\n" ALPHA);
         printf("Digite seu email: ");
@@ -126,21 +88,11 @@ void confirmarAcesso(void){
         fscanf(pointer, "login:\t%s\nsenha:\t%s\n", complogin, compsnh);
         fclose(pointer);
 
-        printf("%s \t %s\n", complogin, compsnh);
-        printf("%s \t %s\n", logtmp, snhtmp);
-        
         checkoutL = strcmp(logtmp, complogin);
         checkoutS = strcmp(snhtmp, compsnh);
 
-        if(checkoutL == 0 && checkoutS == 0){
-            printf("Bem vindo ao sistema!");
-        } else{
-            printf("Tá errado ae! \n Tenta de novo!");
+        }while(checkoutL != 0 || checkoutS != 0);
+            printf("\vBem vindo ao sistema!\n\v");
             exit(0);
         };
-
-
-        printf("\n%s \n%s \n", complogin, compsnh);
-
-    };
 };
