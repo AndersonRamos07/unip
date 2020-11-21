@@ -1,7 +1,7 @@
 #ifndef pimcolors
 #define pimcolors
 
-#define STAMP "\x1b[46m"
+#define STAMP "\x1b[40m"
 
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
@@ -11,5 +11,6 @@
 #define GRAY "\e[0;37m"
 #define DGRAY "\e[1;30m"
 #define HIDDEN "\x1b[7m"
+#define BLINK "\x1b[5m" 
 
 #endif
