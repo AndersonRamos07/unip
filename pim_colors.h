@@ -1,7 +1,10 @@
 #ifndef pimcolors
 #define pimcolors
 
-#define STAMP "\x1b[40m"
+#define STAMP "\x1b[41m"
+#define GSTAMP "\x1b[42m"
+#define YSTAMP "\x1b[43m"
+#define BSTAMP "\x1b[44m"
 
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"

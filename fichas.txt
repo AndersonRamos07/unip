@@ -1,25 +1,29 @@
-CEP:	34555354
-Idade:	1999 anos
 
-CEP:	as
-Idade:	2020 anos
 
-CEP:	24342432
-Idade:	2020 anos
+CEP:	43526-000
+Idade:	65 anos
 
-CEP:	423423423
-Idade:	2020 anos
+CEP:	54325-666
+Idade:	18235 anos
 
-CEP:	43543535
-Idade:	2020 anos
+CEP:	1
+Idade:	0 anos
 
-CEP:	34324324234
-Žã
-Idade:	2020 anos
+CEP:	2
+Idade:	0 anos
 
-CEP:	3423423
-Idade:	2020 anos
+CEP:	2
+Idade:	0 anos
+
+CEP:	324234324
+Idade:	909 anos
+
+CEP:	sd
+Idade:	909 anos
+
+CEP:	34g5g34g3
+Idade:	75 anos
 
 CEP:	342
-Idade:	2020 anos
+Idade:	-40 anos
 
