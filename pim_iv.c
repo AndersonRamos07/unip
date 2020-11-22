@@ -3,7 +3,20 @@
 #include <string.h>
 #include <curses.h>
 
-#include "pim_colors.h"
+#define STAMP "\x1b[41m"
+#define GSTAMP "\x1b[42m"
+#define YSTAMP "\x1b[43m"
+#define BSTAMP "\x1b[44m"
+
+#define RED "\x1b[31m"
+#define GREEN "\x1b[32m"
+#define BLUE "\x1b[34m"
+#define ALPHA "\x1b[0m"
+#define YELLOW "\x1b[33m"
+#define GRAY "\e[0;37m"
+#define DGRAY "\e[1;30m"
+#define HIDDEN "\x1b[7m"
+#define BLINK "\x1b[5m"
 
 struct acesso
 {
@@ -65,13 +78,11 @@ void boasVindas(void){
                 cadastrarAcesso(&sistema);
                 break;
             case '0':
-                exit(0);
-                break;
-            default:
-                printf(YELLOW "Selecione uma opção válida! \n" ALPHA);
+                break;            
             };
-        }while(aswer != '1' || aswer != '2' || aswer != '3' || aswer != '0');
-}
+            printf(YELLOW "Selecione uma opção válida! \n" ALPHA);
+        }while(aswer != '0');
+};
 
 void cadastrarAcesso(struct acesso *ac){
     
@@ -147,7 +158,7 @@ void cadastrarPaciente(struct ficha *fc){
         printf("Erro ao abrir o arquivo!");
     }else{
         system("clear");
-        fflush(stdout);
+        fflush(stdin);
         printf(STAMP "[  ||     =============================     ||  ]\n" ALPHA);
         printf(STAMP "[::++::== CONTROLE PANDÊMICO (COVID-19) ==::++::]\n" ALPHA);
         printf(STAMP "[  ||     "YSTAMP"=====CADASTRO DE PACIENTE===="ALPHA STAMP"     ||  ]\n" ALPHA);
@@ -211,11 +222,12 @@ void cadastrarPaciente(struct ficha *fc){
             }else{
                 printf(YELLOW "\vNovos dados de acesso cadastrados com sucesso!\n\7"ALPHA);
             };
-                retornarCadastro();        
+             //   retornarCadastro();        
         };
     exit(0);
 };
 
+/*
 void retornarCadastro(){
     int choice;
     fflush(stdin);
@@ -236,3 +248,4 @@ void retornarCadastro(){
         break;
     };
 }
+*/
