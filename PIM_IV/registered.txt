@@ -1,0 +1,9 @@
+CEP:	12345-000
+Idade:	64 anos
+
+CEP:	54321-000
+Idade:	75 anos
+
+CEP:	test
+Idade:	4 anos
+
