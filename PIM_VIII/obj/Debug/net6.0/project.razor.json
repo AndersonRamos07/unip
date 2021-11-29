@@ -16298,6 +16298,16 @@
   "RootNamespace": "PIM_VIII",
   "Documents": [
     {
+      "FilePath": "/home/anderson/Repository/unip/PIM_VIII/Views/Pessoa/CadastrarPessoa.cshtml",
+      "TargetPath": "Views\\Pessoa\\CadastrarPessoa.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/anderson/Repository/unip/PIM_VIII/Views/Pessoa/Index.cshtml",
+      "TargetPath": "Views\\Pessoa\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/anderson/Repository/unip/PIM_VIII/Views/Pessoa/GetPessoaDetails.cshtml",
       "TargetPath": "Views\\Pessoa\\GetPessoaDetails.cshtml",
       "FileKind": "mvc"

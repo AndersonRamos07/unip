@@ -1,0 +1,52 @@
+﻿@model PIM_VIII.Models.Pessoa
+
+@{
+    ViewData["Title"] = "Cadastrar Pessoa";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cadastrar Pessoa</h1>
+    <h3>Prrencha as informações abaixo:</h3>
+    <br/>
+    <form action="post">
+    <fieldset>
+        <legend>Identificação</legend>
+    <label for="Nome">Nome:</label>
+        <input type="text" name="Nome"/>
+    <label for="CPF">CPF:</label>
+        <input type="text" name="CPF"/>
+    </fieldset>
+    </br />
+    <fieldset>
+        <legend>Endereço</legend>
+    <label for="Logradouro">Logradouro</label>
+        <input type="text" name="Logradouro"/>
+    <label for="Numero">Número:</label>
+        <input type="number" name="Numero"/>
+    <label for="Bairro">Bairro:</label>
+        <input type="text" name="Bairro"/>
+        <br /><br />
+    <label for="Cidade">Cidade:</label>
+        <input type="text" name="Cidade"/>
+    <label for="Estado">Estado:</label>
+        <input type="text" name="Estado"/>
+        <br /><br />
+    <label for="CEP">CEP:</label>
+        <input type="text" name="CEP"/>
+    </fieldset>
+    <br />
+    <label for="Telefone">Telefone(s):</label>
+        <input type="text" name="Telefone">
+    <select name="TipoTelefone">
+        <option value="Celular">Celular</option>
+        <option value="Residencial">Residencial</option>
+        <option value="Comercial">Comercial</option>
+    </select>
+
+    <fieldset>
+        <legend>-</legend>
+        <button type="submit">Cadastrar nova Pessoa</button>
+        <button>Cancelar</button>
+    </fieldset>
+    </form>
+</div>

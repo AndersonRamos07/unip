@@ -1,5 +1,3 @@
-using PIM_VIII.Models;
-
 namespace PIM_VIII.Models
 {
     public class Pessoa

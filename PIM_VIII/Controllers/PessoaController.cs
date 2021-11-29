@@ -16,6 +16,10 @@ public class PessoaController : Controller
     {
         return View();
     }
+        public IActionResult CadastrarPessoa()
+    {
+        return View(new Pessoa());
+    }
     public IActionResult GetPessoaDetails()
     {
         Pessoa pessoa = new Pessoa();

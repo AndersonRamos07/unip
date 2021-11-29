@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "FCymBmbF+BsfgYOnc/F3h2nlQO7TCP7KH+sjaUOme+uClSY6Jg89+vBk64wCeQzYxrkkfhDEXlpLtrs63G5FQw==",
+  "dgSpecHash": "KkH20ykLYn50pNpsdZwKnrDOzBVOwQbXhNqSRzSoKiqd8H2k9dKyu1K9d8b1XxzdCQt7NowKn1vLtZt0O9GneQ==",
   "success": true,
   "projectFilePath": "/home/anderson/Repository/unip/PIM_VIII/PIM_VIII.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/anderson/.nuget/packages/npgsql/6.0.0/npgsql.6.0.0.nupkg.sha512",
+    "/home/anderson/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
